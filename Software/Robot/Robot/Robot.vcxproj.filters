@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="System">
+      <UniqueIdentifier>{4ab11737-b8df-43c3-8a46-a133e1bb4fa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Motor">
+      <UniqueIdentifier>{d41ba95c-6b84-4817-8cd0-e00c8df373d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Robot.ino" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="__vm\.Robot.vsarduino.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="rtMotor.h">
+      <Filter>Motor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="rtMotor.cpp">
+      <Filter>Motor</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
