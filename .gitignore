@@ -163,3 +163,4 @@ pip-log.txt
 .DS_Store
 /Software/Robot/.vs
 /Software/Robot/Robot/__vm
+/Software/Robot/*.db
