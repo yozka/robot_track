@@ -2,18 +2,18 @@
 
 AMotor motor;
 
+
 void setup() 
 {
 	motor.begin();
 
-
-	motor.speed(100, 100);
-	motor.stop();
-	motor.speedM1(100);
-	motor.speedM2(-100);
-
 }
+
 
 void loop() 
 {
+	motor.setSpeed(400, 400);
+	delay(5000);
+	motor.setSpeed(-200, -200);
+	delay(2000);
 }
