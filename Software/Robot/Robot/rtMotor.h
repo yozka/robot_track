@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//настройка ножек
+	//настройка пинов
 	const unsigned char motor1_dir = 6;
 	const unsigned char motor2_dir = 11;
 	const unsigned char motor1_pwm = 9;
@@ -23,7 +23,7 @@ namespace Setting
 
  ///---------------------------------------------------------------------------
 ///
-/// Система моторов
+/// ‘истема моторов
 ///
 ///----------------------------------------------------------------------------
 class AMotor
@@ -38,6 +38,6 @@ public:
 	void setSpeed1	(const int speed); //установка скорости для двигателя 1
 	void setSpeed2	(const int speed); //установка скорости для двигателя 2
 	void setSpeed	(const int speed1, const int speed2); //установка скорости
-	void stop		();//полная остановка
+	void stop		();//полнаЯ остановка
 
 };
