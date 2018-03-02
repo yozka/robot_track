@@ -9,8 +9,8 @@
 namespace Setting
 {
 	//настройка ножек
-	const unsigned char motor1_dir = 7;
-	const unsigned char motor2_dir = 8;
+	const unsigned char motor1_dir = 6;
+	const unsigned char motor2_dir = 11;
 	const unsigned char motor1_pwm = 9;
 	const unsigned char motor2_pwm = 10;
 }
