@@ -1,0 +1,84 @@
+﻿#include "rtLineSensor.h"
+#include "rtMotor.h"
+
+const float maxSpeed	= 0.8f;		//максимальная скорость робота
+const float minSpeed	= 0.4f;		//минимальная скорость робота
+
+const float boostMove	= 0.0004f;	//ускорение движения вперед
+const float brakeMove	= 0.00035f;	//торможение движения вперед
+
+const float boostTwist	= 0.01f;	//ускорение поворота
+const float brakeTwist	= 0.001f;  //ускорение на обратный поворот
+
+AMotor motor; //моторы
+ALineSensor line; //датчики линии
+
+float twist = 0.0f; //поворот -1..0..1
+float move	= 0.0f; //скорость движения 0..1
+
+void setup() 
+{
+	motor.begin();
+	line.begin();
+}
+void loop() 
+{
+	//двигаемся вперед если стоим на линии
+	if (line.center() && !line.left() && !line.right() && move < maxSpeed)
+	{
+		move += boostMove;
+	}
+
+	//линия слевой стороны, поворачиваем налево
+	if (line.left() && twist > -move)
+	{
+		twist -= boostTwist;
+	}
+
+	//линия справой стороны, поворачиваем направо
+	if (line.right() && twist < move)
+	{
+		twist += boostTwist;
+	}
+
+	//поворачиваем робота обратно
+	if (twist < brakeTwist)
+	{
+		twist += brakeTwist;
+	}
+	if (twist > brakeTwist)
+	{
+		twist -= brakeTwist;
+	}
+
+	//уменьшаем скорость до минимума
+	if (move > minSpeed)
+	{
+		move -= brakeMove;
+	}
+
+	float motorA = move + twist; //скорость левого мотора
+	float motorB = move - twist; //скорость правого мотора
+	motor.setSpeed(400 * motorA, 400 * motorB);
+}
+
+
+/*
+void loop()
+{
+	if (!line.left() && !line.right())
+	{
+		motor.setSpeed(400, 400);
+	}
+	else
+	if (line.left())
+	{
+		motor.setSpeed(0, 400);
+	}
+	else
+	if (line.right())
+	{
+		motor.setSpeed(400, 0);
+	}
+}
+*/
