@@ -8,11 +8,11 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//настройка пинов
-	const unsigned char motor1_dir = 6;
-	const unsigned char motor2_dir = 11;
-	const unsigned char motor1_pwm = 9;
-	const unsigned char motor2_pwm = 10;
+	//РЅР°СЃС‚СЂРѕР№РєР° РїРёРЅРѕРІ
+	const unsigned char pinMotor1_dir = 6;
+	const unsigned char pinMotor2_dir = 11;
+	const unsigned char pinMotor1_pwm = 9;
+	const unsigned char pinMotor2_pwm = 10;
 }
 //-----------------------------------------------------------------------------
 
@@ -23,7 +23,7 @@ namespace Setting
 
  ///---------------------------------------------------------------------------
 ///
-/// ‘истема моторов
+/// вЂРёСЃС‚РµРјР° РјРѕС‚РѕСЂРѕРІ
 ///
 ///----------------------------------------------------------------------------
 class AMotor
@@ -31,13 +31,13 @@ class AMotor
 public:
 	
 	AMotor(); //constructor
-	~AMotor(); 	//destructor
+	virtual ~AMotor(); 	//destructor
 
 
-	void begin		(); //настройка моторов
-	void setSpeed1	(const int speed); //установка скорости для двигателя 1
-	void setSpeed2	(const int speed); //установка скорости для двигателя 2
-	void setSpeed	(const int speed1, const int speed2); //установка скорости
-	void stop		();//полнаЯ остановка
+	void begin		(); //РЅР°СЃС‚СЂРѕР№РєР° РјРѕС‚РѕСЂРѕРІ
+	void setSpeed1	(const int speed); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё РґР»СЏ РґРІРёРіР°С‚РµР»СЏ 1
+	void setSpeed2	(const int speed); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё РґР»СЏ РґРІРёРіР°С‚РµР»СЏ 2
+	void setSpeed	(const int speed1, const int speed2); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё
+	void stop		();//РїРѕР»РЅР°РЇ РѕСЃС‚Р°РЅРѕРІРєР°
 
 };

@@ -7,6 +7,9 @@
     <Filter Include="Motor">
       <UniqueIdentifier>{d41ba95c-6b84-4817-8cd0-e00c8df373d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="LineSensor">
+      <UniqueIdentifier>{bbbaceaa-f63e-4809-aa8d-5c1e9c5de669}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Robot.ino" />
@@ -18,10 +21,16 @@
     <ClInclude Include="rtMotor.h">
       <Filter>Motor</Filter>
     </ClInclude>
+    <ClInclude Include="rtLineSensor.h">
+      <Filter>LineSensor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rtMotor.cpp">
       <Filter>Motor</Filter>
+    </ClCompile>
+    <ClCompile Include="rtLineSensor.cpp">
+      <Filter>LineSensor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
