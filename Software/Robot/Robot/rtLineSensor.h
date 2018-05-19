@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//РЅР°СЃС‚СЂРѕР№РєР° РїРёРЅРѕРІ
+	//настройка пинов
 	const unsigned char pinLineSensorA = 12;
 	const unsigned char pinLineSensorB = 8;
 	const unsigned char pinLineSensorC = 7;
@@ -22,7 +22,7 @@ namespace Setting
 
  ///---------------------------------------------------------------------------
 ///
-/// Р”Р°С‚С‡РёРє Р»РёРЅРёР№
+/// Датчик линий
 ///
 ///----------------------------------------------------------------------------
 class ALineSensor
@@ -33,11 +33,14 @@ public:
 	virtual ~ALineSensor(); 	//destructor
 
 
-	void begin(); //РЅР°СЃС‚СЂРѕР№РєР°
+	void begin(); //настройка
 	
 
-	bool left()const;	//Р»РµРІС‹Р№ СЃРµРЅСЃРѕСЂ
-	bool center()const; //С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ СЃРµРЅСЃРѕСЂ
-	bool right()const;	//РїСЂР°РІС‹Р№ СЃРµРЅСЃРѕСЂ
+	bool left()const;	//левый сенсор
+	bool center()const; //центральный сенсор
+	bool right()const;	//правый сенсор
 
 };
+
+
+extern ALineSensor line;

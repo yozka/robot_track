@@ -10,6 +10,15 @@
     <Filter Include="LineSensor">
       <UniqueIdentifier>{bbbaceaa-f63e-4809-aa8d-5c1e9c5de669}</UniqueIdentifier>
     </Filter>
+    <Filter Include="StateMachine">
+      <UniqueIdentifier>{97b51f87-7d62-40dd-a448-75543c600046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BumperSensor">
+      <UniqueIdentifier>{ada78b93-25ff-49c4-b311-0dca51c839f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CommandMove">
+      <UniqueIdentifier>{16ae96f3-bf3c-4c8f-b4f0-0d9ff80e7d46}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="Robot.ino" />
@@ -24,6 +33,15 @@
     <ClInclude Include="rtLineSensor.h">
       <Filter>LineSensor</Filter>
     </ClInclude>
+    <ClInclude Include="rtStateMachine.h">
+      <Filter>StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="rtBumperSensor.h">
+      <Filter>BumperSensor</Filter>
+    </ClInclude>
+    <ClInclude Include="rtCommandMove.h">
+      <Filter>CommandMove</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rtMotor.cpp">
@@ -31,6 +49,12 @@
     </ClCompile>
     <ClCompile Include="rtLineSensor.cpp">
       <Filter>LineSensor</Filter>
+    </ClCompile>
+    <ClCompile Include="rtStateMachine.cpp">
+      <Filter>StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="rtBumperSensor.cpp">
+      <Filter>BumperSensor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

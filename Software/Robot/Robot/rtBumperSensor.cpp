@@ -1,4 +1,4 @@
-#include "rtLineSensor.h"
+#include "rtBumperSensor.h"
 ///----------------------------------------------------------------------------
 
 
@@ -6,7 +6,7 @@
 
 
 ///----------------------------------------------------------------------------
-static ALineSensor line;
+static ABumperSensor bumper;
 ///----------------------------------------------------------------------------
 
 
@@ -19,7 +19,7 @@ static ALineSensor line;
 /// Constructor
 ///
 ///----------------------------------------------------------------------------
-ALineSensor :: ALineSensor()
+ABumperSensor :: ABumperSensor()
 {
 
 }
@@ -33,7 +33,7 @@ ALineSensor :: ALineSensor()
 /// Destructor
 ///
 ///----------------------------------------------------------------------------
-ALineSensor :: ~ALineSensor()
+ABumperSensor :: ~ABumperSensor()
 {
 
 }
@@ -47,11 +47,10 @@ ALineSensor :: ~ALineSensor()
 /// настройка
 ///
 ///----------------------------------------------------------------------------
-void ALineSensor :: begin()
+void ABumperSensor:: begin()
 {
-	pinMode(Setting::pinLineSensorA, INPUT);
-	pinMode(Setting::pinLineSensorB, INPUT);
-	pinMode(Setting::pinLineSensorC, INPUT);
+	pinMode(Setting::pinBumperA, INPUT);
+	pinMode(Setting::pinBumperB, INPUT);
 }
 ///----------------------------------------------------------------------------
 
@@ -63,26 +62,12 @@ void ALineSensor :: begin()
 /// левый сенсор
 ///
 ///----------------------------------------------------------------------------
-bool ALineSensor :: left() const
+bool ABumperSensor:: left() const
 {
-	return digitalRead(Setting::pinLineSensorA) != 0;
+	return mLeft;
+	//return digitalRead(Setting::pinBumperA) == 0;
 }
 ///----------------------------------------------------------------------------
-
-
-
-
- ///---------------------------------------------------------------------------
-///
-/// сентральный сенсор
-///
-///----------------------------------------------------------------------------
-bool ALineSensor :: center() const
-{
-	return digitalRead(Setting::pinLineSensorB) != 0;
-}
-///----------------------------------------------------------------------------
-
 
 
 
@@ -94,12 +79,61 @@ bool ALineSensor :: center() const
 /// правый сенсор
 ///
 ///----------------------------------------------------------------------------
-bool ALineSensor :: right() const
+bool ABumperSensor:: right() const
 {
-	return digitalRead(Setting::pinLineSensorC) != 0;
+	return mRight;
+	//return digitalRead(Setting::pinBumperB) == 0;
 }
 ///----------------------------------------------------------------------------
 
+
+
+
+
+ ///---------------------------------------------------------------------------
+///
+/// обновление
+///
+///----------------------------------------------------------------------------
+void ABumperSensor :: update()
+{
+	//left
+	mFLeft = mFLeft << 1;
+	if (digitalRead(Setting::pinBumperA) == 0)
+	{
+		mFLeft |= 1;
+	}
+
+	//right
+	mFRight = mFRight << 1;
+	if (digitalRead(Setting::pinBumperB) == 0)
+	{
+		mFRight |= 1;
+	}
+	
+
+
+	const bool l = mFLeft > 0 ? true : false;
+	const bool r = mFRight > 0 ? true : false;
+
+
+
+
+	if (mLeft == l && mRight == r)
+	{
+		return;
+	}
+
+	mLeft = l;
+	mRight = r;
+
+
+	if (signal_detect)
+	{
+		signal_detect();
+	}
+}
+///----------------------------------------------------------------------------
 
 
 
