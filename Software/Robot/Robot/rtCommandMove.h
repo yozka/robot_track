@@ -127,17 +127,36 @@ public:
 		{
 			return;
 		}
-		motor.setSpeed(-300, -300);
+		mTime = time + 400 + rand() % 1000;
+		switch (rand() % 5)
+		{
+			case 0 : //двигаемся налево
+			{
+				motor.setSpeed(-100, 400);
+				break;
+			}
+			case 1: //двигаемся направо
+			{
+				motor.setSpeed(400, -100);
+				break;
+			}
+			default:
+			{
+				//двигаемся вперед
+				motor.setSpeed(400, 400);
+				mTime = time + 2000 + rand() % 3000;
+				break;
+			}
+
+		}
 	};
 	
 	void onExit() override { };
 	
-	int	 onTimeActive() override 
-	{ 
-		return 1000; 
-	};
+	int	 onTimeActive() override{ return 100;};
 
 private:
 	unsigned long mTime = { 0 };
+
 };
 //-----------------------------------------------------------------------------
