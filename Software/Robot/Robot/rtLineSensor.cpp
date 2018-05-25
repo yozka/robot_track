@@ -1,4 +1,4 @@
-#include "rtLineSensor.h"
+п»ї#include "rtLineSensor.h"
 ///----------------------------------------------------------------------------
 
 
@@ -44,7 +44,7 @@ ALineSensor :: ~ALineSensor()
 
  ///---------------------------------------------------------------------------
 ///
-/// настройка
+/// РЅР°СЃС‚СЂРѕР№РєР°
 ///
 ///----------------------------------------------------------------------------
 void ALineSensor :: begin()
@@ -60,12 +60,13 @@ void ALineSensor :: begin()
 
  ///---------------------------------------------------------------------------
 ///
-/// левый сенсор
+/// Р»РµРІС‹Р№ СЃРµРЅСЃРѕСЂ
 ///
 ///----------------------------------------------------------------------------
 bool ALineSensor :: left() const
 {
-	return digitalRead(Setting::pinLineSensorA) != 0;
+	  return mLeft;
+	  //return digitalRead(Setting::pinLineSensorA) != 0;
 }
 ///----------------------------------------------------------------------------
 
@@ -74,12 +75,13 @@ bool ALineSensor :: left() const
 
  ///---------------------------------------------------------------------------
 ///
-/// сентральный сенсор
+/// СЃРµРЅС‚СЂР°Р»СЊРЅС‹Р№ СЃРµРЅСЃРѕСЂ
 ///
 ///----------------------------------------------------------------------------
 bool ALineSensor :: center() const
 {
-	return digitalRead(Setting::pinLineSensorB) != 0;
+    return mCenter;
+	  //return digitalRead(Setting::pinLineSensorB) != 0;
 }
 ///----------------------------------------------------------------------------
 
@@ -91,15 +93,74 @@ bool ALineSensor :: center() const
 
  ///---------------------------------------------------------------------------
 ///
-/// правый сенсор
+/// РїСЂР°РІС‹Р№ СЃРµРЅСЃРѕСЂ
 ///
 ///----------------------------------------------------------------------------
 bool ALineSensor :: right() const
 {
-	return digitalRead(Setting::pinLineSensorC) != 0;
+	  return mRight;
+	  //return digitalRead(Setting::pinLineSensorC) != 0;
 }
 ///----------------------------------------------------------------------------
 
+
+
+
+
+ ///---------------------------------------------------------------------------
+///
+/// РѕР±РЅРѕРІР»РµРЅРёРµ
+///
+///----------------------------------------------------------------------------
+void ALineSensor :: update()
+{
+  //left
+  mFLeft = mFLeft << 1;
+  if (digitalRead(Setting::pinLineSensorA) != 0)
+  {
+    mFLeft |= 1;
+  }
+
+  mFCenter = mFCenter << 1;
+  if (digitalRead(Setting::pinLineSensorB) != 0)
+  {
+    mFCenter |= 1;
+  }
+
+
+
+  //right
+  mFRight = mFRight << 1;
+  if (digitalRead(Setting::pinLineSensorC) != 0)
+  {
+    mFRight |= 1;
+  }
+  
+
+
+  const bool l = mFLeft > 0 ? true : false;
+  const bool c = mFCenter > 0 ? true : false;
+  const bool r = mFRight > 0 ? true : false;
+  
+
+
+
+  if (mLeft == l && mCenter == c && mRight == r)
+  {
+      return;
+  }
+
+  mLeft = l;
+  mCenter = c;
+  mRight = r;
+
+
+  if (signal_detect)
+  {
+      signal_detect();
+  }
+}
+///----------------------------------------------------------------------------
 
 
 

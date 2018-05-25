@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Arduino.h>
 //-----------------------------------------------------------------------------
 
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//настройка пинов
+	//РЅР°СЃС‚СЂРѕР№РєР° РїРёРЅРѕРІ
 	const unsigned char pinLineSensorA = 12;
 	const unsigned char pinLineSensorB = 8;
 	const unsigned char pinLineSensorC = 7;
@@ -19,10 +19,19 @@ namespace Setting
 
 
 
+//-----------------------------------------------------------------------------
+#ifndef FAction
+  using FAction = void(*)();  //РґРµР№СЃС‚РІРёРµ
+#endif
+//-----------------------------------------------------------------------------
+
+
+
+
 
  ///---------------------------------------------------------------------------
 ///
-/// Датчик линий
+/// Р”Р°С‚С‡РёРє Р»РёРЅРёР№
 ///
 ///----------------------------------------------------------------------------
 class ALineSensor
@@ -33,12 +42,25 @@ public:
 	virtual ~ALineSensor(); 	//destructor
 
 
-	void begin(); //настройка
+	void begin(); //РЅР°СЃС‚СЂРѕР№РєР°
 	
 
-	bool left()const;	//левый сенсор
-	bool center()const; //центральный сенсор
-	bool right()const;	//правый сенсор
+	bool left()const;	//Р»РµРІС‹Р№ СЃРµРЅСЃРѕСЂ
+	bool center()const; //С†РµРЅС‚СЂР°Р»СЊРЅС‹Р№ СЃРµРЅСЃРѕСЂ
+	bool right()const;	//РїСЂР°РІС‹Р№ СЃРµРЅСЃРѕСЂ
+
+  mutable FAction signal_detect = { nullptr };
+  void update(); //РѕР±РЅРѕРІР»РµРЅРёРµ
+
+private:
+    bool mLeft    = { false };
+    bool mCenter  = { false };
+    bool mRight   = { false };
+
+
+    byte mFLeft   = { 0 };
+    byte mFCenter = { 0 };
+    byte mFRight  = { 0 };
 
 };
 

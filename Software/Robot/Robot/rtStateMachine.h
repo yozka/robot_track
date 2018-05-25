@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Arduino.h>
 //-----------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace SM
 
 	//-----------------------------------------------------------------------------
 #ifndef FAction
-	using FAction = void(*)();	//действие
+	using FAction = void(*)();	//РґРµР№СЃС‚РІРёРµ
 #endif
 	//-----------------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ namespace SM
 
 	 ///---------------------------------------------------------------------------
 	///
-	/// Одно состояние
+	/// СњРґРЅРѕ СЃРѕСЃС‚РѕВ¤РЅРёРµ
 	///
 	///----------------------------------------------------------------------------
 	class AStateObject
@@ -38,7 +38,7 @@ namespace SM
 		virtual void onUpdate()		= 0;
 		virtual void onExit()		= 0;
 		
-		virtual int  onTimeActive() = 0; //время выполнения команды
+		virtual int  onTimeActive() = 0; //РІСЂРµРјВ¤ РІС‹РїРѕР»РЅРµРЅРёВ¤ РєРѕРјР°РЅРґС‹
 	private:
 
 	};
@@ -54,7 +54,7 @@ namespace SM
 
 	 ///---------------------------------------------------------------------------
 	///
-	/// Одно состояние
+	/// СњРґРЅРѕ СЃРѕСЃС‚РѕВ¤РЅРёРµ
 	///
 	///----------------------------------------------------------------------------
 	class AState
@@ -91,7 +91,7 @@ namespace SM
 
 	 ///---------------------------------------------------------------------------
 	///
-	/// Машина состояний
+	/// С›Р°С€РёРЅР° СЃРѕСЃС‚РѕВ¤РЅРёР№
 	///
 	///----------------------------------------------------------------------------
 	class AStateMachine
@@ -100,21 +100,21 @@ namespace SM
 		AStateMachine();
 
 		AStateMachine& update();
-		AStateMachine& command(AStateObject& state, const int time = 0); //запуск команды
+		AStateMachine& command(AStateObject& state, const int time = 0); //Р·Р°РїСѓСЃРє РєРѕРјР°РЅРґС‹
 
 		AStateObject& current();
 		bool isState(const AStateObject &state) const;
 
-		mutable FAction signal_next = {nullptr}; //следующая команда
+		mutable FAction signal_next = {nullptr}; //СЃР»РµРґСѓСЋС‰Р°В¤ РєРѕРјР°РЅРґР°
 
 	private:
 		AStateObject*	mCurrentState;
 		AStateObject*	mNextState;
-		unsigned long	mTimeActive; //активное время выполнения
+		unsigned long	mTimeActive; //Р°РєС‚РёРІРЅРѕРµ РІСЂРµРјВ¤ РІС‹РїРѕР»РЅРµРЅРёВ¤
 		int mNextTime;
 
 
-		void transition(); //перенос
+		void transition(); //РїРµСЂРµРЅРѕСЃ
 
 	};
 

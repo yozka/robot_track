@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Arduino.h>
 //-----------------------------------------------------------------------------
 
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//настройка пинов
+	//РЅР°СЃС‚СЂРѕР№РєР° РїРёРЅРѕРІ
 	const unsigned char pinBumperA = PD3;
 	const unsigned char pinBumperB = PD5;
 }
@@ -19,7 +19,7 @@ namespace Setting
 
 //-----------------------------------------------------------------------------
 #ifndef FAction
-	using FAction = void(*)();	//действие
+	using FAction = void(*)();	//РґРµР№СЃС‚РІРёРµ
 #endif
 //-----------------------------------------------------------------------------
 
@@ -28,7 +28,7 @@ namespace Setting
 
  ///---------------------------------------------------------------------------
 ///
-/// Датчик бампера
+/// Р”Р°С‚С‡РёРє Р±Р°РјРїРµСЂР°
 ///
 ///----------------------------------------------------------------------------
 	class ABumperSensor
@@ -39,14 +39,14 @@ namespace Setting
 		virtual ~ABumperSensor(); 	//destructor
 
 
-		void begin(); //настройка
+		void begin(); //РЅР°СЃС‚СЂРѕР№РєР°
 
 
-		bool left()const;	//левый бампер
-		bool right()const;	//правый бампер
+		bool left()const;	//Р»РµРІС‹Р№ Р±Р°РјРїРµСЂ
+		bool right()const;	//РїСЂР°РІС‹Р№ Р±Р°РјРїРµСЂ
 
 		mutable FAction signal_detect = { nullptr };
-		void update(); //обновление
+		void update(); //РѕР±РЅРѕРІР»РµРЅРёРµ
 
 
 	private:
@@ -58,7 +58,6 @@ namespace Setting
 		byte mFRight = { 0 };
 
 	
-	unsigned long mTimeLeft;
 
 
 

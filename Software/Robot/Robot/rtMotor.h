@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Arduino.h>
 //-----------------------------------------------------------------------------
 
@@ -8,7 +8,7 @@
 //-----------------------------------------------------------------------------
 namespace Setting
 {
-	//настройка пинов
+	//РЅР°СЃС‚СЂРѕР№РєР° РїРёРЅРѕРІ
 	const unsigned char pinMotor1_dir = 6;
 	const unsigned char pinMotor2_dir = 11;
 	const unsigned char pinMotor1_pwm = 9;
@@ -23,7 +23,7 @@ namespace Setting
 
  ///---------------------------------------------------------------------------
 ///
-/// Система моторов
+/// РЎРёСЃС‚РµРјР° РјРѕС‚РѕСЂРѕРІ
 ///
 ///----------------------------------------------------------------------------
 class AMotor
@@ -34,11 +34,11 @@ public:
 	virtual ~AMotor(); 	//destructor
 
 
-	void begin		(); //настройка моторов
-	void setSpeed1	(const int speed); //установка скорости дл¤ двигател¤ 1
-	void setSpeed2	(const int speed); //установка скорости дл¤ двигател¤ 2
-	void setSpeed	(const int speed1, const int speed2); //установка скорости
-	void stop		();//полная остановка
+	void begin		(); //РЅР°СЃС‚СЂРѕР№РєР° РјРѕС‚РѕСЂРѕРІ
+	void setSpeed1	(const int speed); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё РґР»В¤ РґРІРёРіР°С‚РµР»В¤ 1
+	void setSpeed2	(const int speed); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё РґР»В¤ РґРІРёРіР°С‚РµР»В¤ 2
+	void setSpeed	(const int speed1, const int speed2); //СѓСЃС‚Р°РЅРѕРІРєР° СЃРєРѕСЂРѕСЃС‚Рё
+	void stop		();//РїРѕР»РЅР°СЏ РѕСЃС‚Р°РЅРѕРІРєР°
 
 };
 
